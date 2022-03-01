@@ -5,26 +5,41 @@ class PageViewDesignScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final _pageViewController = PageController();
 
     return Scaffold(
-      body: PageView(
-        scrollDirection: Axis.vertical,
-        controller: _pageViewController,
-        children: [
-          _PageViewImage(pageController:_pageViewController),
-          _PageViewContain()
-        ],
-      )
-      );
+        body: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              stops: [
+                0.5, 0.5
+              ],
+              colors: [
+                Color.fromRGBO(117,234,205, 1),
+                Color.fromRGBO(80, 194, 221, 1)
+              ]
+              )
+          ),
+          child: PageView(
+          physics: BouncingScrollPhysics(),
+      scrollDirection: Axis.vertical,
+      controller: _pageViewController,
+      children: [
+          _PageViewImage(pageController: _pageViewController),
+          const _PageViewContain()
+      ],
+    ),
+        ));
   }
 }
 
 class _PageViewImage extends StatelessWidget {
   final PageController pageController;
   const _PageViewImage({
-    Key? key, required this.pageController,
+    Key? key,
+    required this.pageController,
   }) : super(key: key);
 
   @override
@@ -50,17 +65,18 @@ class _PageViewImage extends StatelessWidget {
                 const SizedBox(
                   height: 490,
                 ),
-                GestureDetector(
-                  onTap: (){
-                    pageController.nextPage(duration: const Duration(milliseconds: 500), curve: Curves.easeIn);
-                  },
-                  child: const Expanded(
-                      child: RotatedBox(
-                                      quarterTurns: 1,
-                                      child: Icon(Icons.arrow_forward_ios_sharp,
-                        color: Colors.white, size: 120),
-                                    )),
-                )
+                Expanded(
+                    child: GestureDetector(
+                        onTap: () {
+                          pageController.nextPage(
+                              duration: const Duration(milliseconds: 500),
+                              curve: Curves.easeIn);
+                        },
+                        child: const RotatedBox(
+                          quarterTurns: 1,
+                          child: Icon(Icons.arrow_forward_ios_sharp,
+                              color: Colors.white, size: 120),
+                        )))
               ]),
         )
       ],
@@ -87,7 +103,6 @@ class _BackgroundImage extends StatelessWidget {
   }
 }
 
-
 class _PageViewContain extends StatelessWidget {
   const _PageViewContain({Key? key}) : super(key: key);
 
@@ -96,17 +111,25 @@ class _PageViewContain extends StatelessWidget {
     return Container(
       color: const Color.fromRGBO(80, 194, 221, 1),
       child: Center(
+          child: InkWell(
+        splashColor: Colors.amber,
+        onTap: () {
+          print('Bienvenido');
+        },
         child: Container(
           height: 50,
           width: 200,
           decoration: BoxDecoration(
-            color: Colors.blue,
-            borderRadius: BorderRadius.circular(15)
-          ),
-          child: Center(child: Text('Bienvenido', style: TextStyle(color: Colors.white, fontSize: 20),)),
-        )
-      ),
-
+              color: Colors.blue, borderRadius: BorderRadius.circular(15),
+  
+              ),
+          child: const Center(
+              child: Text(
+            'Bienvenido',
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          )),
+        ),
+      )),
     );
   }
 }
