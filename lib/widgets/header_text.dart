@@ -7,8 +7,8 @@ class HeaderText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 250,
-      padding: const EdgeInsets.all(20.0),
-      margin: const EdgeInsets.symmetric(vertical: 20),
+      padding: const EdgeInsets.all(15.0),
+      margin: const EdgeInsets.symmetric(vertical: 25),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: const [

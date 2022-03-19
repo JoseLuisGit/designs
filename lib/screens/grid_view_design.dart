@@ -12,10 +12,7 @@ class GridViewDesignScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
-        children: const [
-          BackGroundGrid(),
-          _BodyGrid()
-        ],
+        children: const [BackGroundGrid(), _BodyGrid()],
       ),
       bottomNavigationBar: CustomNavigationBar(),
     );
@@ -27,9 +24,14 @@ class _BodyGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [HeaderText(), GridContent()],
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: const [
+          HeaderText(), 
+          GridContent()
+          ],
+      ),
     );
   }
 }

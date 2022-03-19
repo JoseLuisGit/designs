@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       initialRoute: 'grid_view',
       debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark(),
       routes: {
         'basic': (context)=> const BasicDesignScreen(),
         'page_view':(context)=>const PageViewDesignScreen(),

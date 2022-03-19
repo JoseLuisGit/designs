@@ -11,7 +11,7 @@ class BackGroundGrid extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
               stops: [
                 0.2, 0.8
@@ -22,7 +22,7 @@ class BackGroundGrid extends StatelessWidget {
               ),
           ),
         ),
-                   Positioned(
+                   const Positioned(
              top: -100,
              left: -10,
              child: _ContainerBox())
