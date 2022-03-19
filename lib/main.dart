@@ -9,11 +9,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Material App',
-      initialRoute: 'page_view',
+      initialRoute: 'grid_view',
       debugShowCheckedModeBanner: false,
       routes: {
         'basic': (context)=> const BasicDesignScreen(),
-        'page_view':(context)=>const PageViewDesignScreen()
+        'page_view':(context)=>const PageViewDesignScreen(),
+        'grid_view': (_) => const GridViewDesignScreen()
       },
     );
   }
